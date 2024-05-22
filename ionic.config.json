@@ -1,0 +1,7 @@
+{
+  "name": "appIncidentes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
