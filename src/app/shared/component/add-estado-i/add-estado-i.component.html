@@ -1,0 +1,28 @@
+<app-header [isModal]="true" title="Aprobar Incidencia"></app-header>
+<ion-content>
+  <div class="d-flex-center">
+    <ion-text class="ion-text-center" color="tertiary">
+        <h3>Código: {{diagnostico.codigoI}}</h3>  
+    </ion-text> 
+    
+  <form (ngSubmit)="submit()" (keypress.enter)="submit()"  [formGroup]="form" >
+    <ion-list >
+    <ion-item  >
+      <ion-select  [formControl]="form.controls.estado" label="Seleccione el estado" label-placement="floating" mode="ios">
+        <ion-select-option value="7">Aprobado</ion-select-option> 
+        <ion-select-option value="8">Rechazado</ion-select-option> 
+        <ion-select-option value="9">Cerrado</ion-select-option> 
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="validators" *ngIf="form.controls.estado.errors && form.controls.estado.touched" >
+    <div *ngIf="form.controls.estado.errors?.['required']" color="danger">Debe seleccionar un estado.</div>
+ </div>
+
+    <ion-button color="tertiary" type="submit" class="submit" expand="block" mode="ios" [disabled]="form.invalid" >
+      Aceptar
+      <ion-icon slot="end"  name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+</div>
+</ion-content>

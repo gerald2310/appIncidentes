@@ -1,0 +1,18 @@
+<ion-header class="btn-close" >
+  <ion-toolbar class="btn-close" color="tertiary">
+    <ion-title class="ion-text-center">
+     <h2>Universidad de Costa Rica</h2>
+     <h3>SGI</h3>
+     <h3>{{title}}</h3> 
+    </ion-title>
+    
+    <ion-buttons class="btn-close"  *ngIf="isModal" slot="start">
+      <ion-button fill="solid" (click)="dismissModal()">
+        <ion-icon  name="close-circle-outline" color="tertiary"></ion-icon>
+      </ion-button>
+      <ion-back-button text="Previous" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+

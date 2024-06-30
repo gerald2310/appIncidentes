@@ -1,0 +1,26 @@
+<app-header [isModal]="true" title="Asignar Incidencia"></app-header>
+<ion-content>
+  <div class="d-flex-center">
+    <ion-text class="ion-text-center" color="tertiary">
+      <h3>Código: {{incidencia.codigoI}}</h3>
+    </ion-text> 
+    
+  <form (ngSubmit)="submit()" (keypress.enter)="submit()"  [formGroup]="formt"  >
+    <ion-list >
+    <ion-item  >
+      <ion-select  [formControl]="formt.controls.tecnico" label="Seleccione el técnico" label-placement="floating" mode="ios">
+        <ion-select-option *ngFor="let tecnico of tecnicos" value="{{tecnico.uid}}">{{tecnico.name}}</ion-select-option> 
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div class="validators" *ngIf="formt.controls.tecnico.errors && formt.controls.tecnico.touched" >
+    <div *ngIf="formt.controls.tecnico.errors?.['required']" color="danger">Debe seleccionar un técnico.</div>
+ </div>
+
+    <ion-button color="tertiary" type="submit" class="submit" expand="block" mode="ios" [disabled]="formt.invalid"  >
+      Asignar
+      <ion-icon slot="end"  name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+</div>
+</ion-content>

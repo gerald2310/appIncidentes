@@ -1,0 +1,12 @@
+h1{
+    color: #856cd9;
+    font-weight: bold;
+    font-size:20px;
+}
+.item-native::after{
+    background-color: #856cd9 !important;
+    z-index: -2;
+}
+span{
+    border: 2px solid #856cd9;
+  }

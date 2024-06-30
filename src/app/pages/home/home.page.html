@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="d-flex-center">
+    <app-header title="Pantalla de Incidentes"></app-header>
+    <br>
+    <h2 class="ion-text-center">Bienvenido {{user()?.name}}</h2>
+    <br>
+    <ion-button type="submit" class="submit" 
+    expand="block" mode="ios" fill="solid" color="tertiary"
+    routerLink="/registro-incidencia">
+      Registrar Incidencias
+    </ion-button>
+    <br>
+    <div *ngIf="rol==4">
+      <ion-button type="submit" color="tertiary" class="submit" expand="block" mode="ios" fill="solid" routerLink="/rdiagnostico-incidencia" >
+        Realizar Diagnostico de Incidencias
+      </ion-button>
+    </div>
+    <br>
+    <div *ngIf="rol==4">
+      <ion-button type="submit" color="tertiary" class="submit" expand="block" mode="ios" fill="solid" routerLink="/diagnosticos" >
+        Diagnostico de Incidencias Realizadas
+      </ion-button>
+    </div>
+    <br>
+    <div *ngIf="rol==3">
+      <ion-button type="submit" color="tertiary" class="submit" expand="block" mode="ios" fill="solid" routerLink="/asigna-incidencias" >
+        Asignar Incidencias
+      </ion-button>
+    </div>
+    <div *ngIf="rol==5">
+      <ion-button type="submit" color="tertiary" class="submit" expand="block" mode="ios" fill="solid" routerLink="/estado-incidencia" >
+        Incidencias por revisar
+      </ion-button>
+    </div>
+    <ion-button  (click)="cerrarSession(this.userLocal)" color="danger" class="submit" expand="block" mode="ios" fill="solid"   >
+      <ion-icon name="close-circle-outline"></ion-icon>
+        Salir
+    </ion-button>
+  </div>
+</ion-content>

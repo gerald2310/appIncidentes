@@ -1,0 +1,37 @@
+<ion-content>
+  <div class="d-flex-center">
+    <app-header title="Incidencias terminadas"></app-header>
+  </div>
+  <ion-card mode="ios" color="success" class="d-flex-center ion-text-center" *ngIf="!loading && diagnostiscos " >  <div>
+    <h5>{{ diagnostiscos.length }}</h5>
+    <p>Incidencias en estado Terminado</p>
+  </div> 
+</ion-card> 
+<ion-list *ngIf="!loading">
+  <ion-item-sliding class="product-item" *ngFor="let diagnostico of diagnostiscos">
+    <ion-item>
+      
+      <ion-label>
+        <div class="name"><h1>{{ diagnostico.codigoI }}</h1></div>
+        <div class="data">
+          <strong>Fecha y hora: </strong> {{ diagnostico.fechaHora }} <br> 
+          <strong>Usuario: </strong> {{  diagnostico.tecnico  }} <br>
+          <strong>Diagnosticos: </strong> {{ diagnostico.diagnostico }} <br> 
+          <strong>Tiempo: </strong> {{ diagnostico.tiempo }}  hrs.<br> 
+          <strong>Compra: </strong> {{ !diagnostico.compra ? 'No' : 'Sí'  }} <br> 
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-item-option color="tertiary"><ion-icon slot="icon-only"  name="create-outline" (click)="addEstado(diagnostico)"></ion-icon></ion-item-option> 
+    </ion-item-options>
+  </ion-item-sliding>
+  
+</ion-list>
+
+<div class="d-flex-center ion-text-center" *ngIf="!loading && !diagnostiscos.length">
+  
+  <h3><ion-icon name="diamond-outline"></ion-icon> No hay incidencias en estado Terminado</h3>
+</div>
+
+</ion-content>

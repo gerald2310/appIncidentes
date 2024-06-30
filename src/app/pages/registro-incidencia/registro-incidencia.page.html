@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="d-flex-center">
+    <app-header title="Registrar incidencia"></app-header>
+    
+ 
+    
+  <ion-card mode="ios" color="warning" class="d-flex-center ion-text-center" *ngIf="!loading && incidencias " >  <div>
+      <h5>{{ incidencias.length }}</h5>
+      <p>Incidencias</p>
+    </div> 
+  </ion-card>
+
+  <ion-list *ngIf="!loading">
+    <ion-item-sliding class="product-item" *ngFor="let incidencia of incidencias">
+      <ion-item>
+        
+        <ion-label>
+          <div class="name"><h1>{{ incidencia.titulo }}</h1></div>
+          <div class="data">
+            <strong>Código: </strong> {{ incidencia.codigoI }} <br> 
+            <strong>Fecha: </strong> {{  incidencia.fechaHora  }} <br>
+            <strong>Usuario: </strong> {{ incidencia.usuario }} <br> 
+            <strong>Lugar: </strong> {{ incidencia.lugar }} <br> 
+            <strong>Decripcion: </strong> {{ incidencia.descripcion }} <br> 
+            
+
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+  <div class="d-flex-center ion-text-center" *ngIf="!loading && !incidencias.length">
+    
+    <h3><ion-icon name="diamond-outline"></ion-icon> No hay incidencias reportadas</h3>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="addIncidencia()">
+        <ion-icon  name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  </div>
+</ion-content>

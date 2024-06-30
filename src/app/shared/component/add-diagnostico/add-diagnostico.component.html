@@ -1,0 +1,75 @@
+<app-header [isModal]="true" title="Agregar diagnostico"></app-header>
+<ion-content>
+  <form (ngSubmit)="submit()" (keypress.enter)="submit()"  [formGroup]="formd" >    
+    <ion-item lines="none">
+      <ion-icon slot="start" name="key-outline" color="tertiary"></ion-icon>
+      <ion-input type="text" 
+                label="Codigo" 
+                label-placement="floating" 
+                [readonly]="true"
+               [formControl]="formd.controls.codigoI"
+               [value]="formd.value.codigoI">
+      </ion-input>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-icon slot="start" name="person-outline"  color="tertiary"></ion-icon>
+      <ion-input type="text" 
+                label="Usuario" 
+                label-placement="floating" 
+                [readonly]="true"
+                [value]="user().name">
+      </ion-input>
+    </ion-item>
+
+
+  <ion-item lines="none">
+    <ion-icon slot="start" name="analytics-sharp"  color="tertiary"></ion-icon>
+    <ion-input type="text" 
+               label="Diagnostico" 
+               label-placement="floating"
+               [formControl]="formd.controls.diagnostico"></ion-input>
+    </ion-item>
+    <div class="validators" *ngIf="formd.controls.diagnostico.errors && formd.controls.diagnostico.touched" >
+        <div *ngIf="formd.controls.diagnostico.errors?.['required']" color="danger">El diagnostico es requerido.</div>
+     </div>
+
+
+    <ion-item lines="none">
+    <ion-icon slot="start" name="time-outline"  color="tertiary"></ion-icon>
+    <ion-input class="native-input sc-ion-input-ios" type="number" 
+               label="Tiempo de solución(horas)" 
+               placeholder="0"
+               label-placement="floating"
+               (ion-input)="setNumberInput()"
+               [formControl]="formd.controls.tiempo" ></ion-input>
+              </ion-item>
+    <div class="validators" *ngIf="formd.controls.tiempo.errors && formd.controls.tiempo.touched" >
+        <div *ngIf="formd.controls.tiempo.errors?.['required']" color="danger">El tiempo es requerido.</div>
+     </div>        
+             
+   
+   <ion-item lines="none">
+      <ion-icon slot="start" name="cart-outline"  color="tertiary"></ion-icon>
+      <ion-select  
+      label="Compra" 
+      label-placement="floating"
+      (ion-input)="setNumberInput()"
+      [formControl]="formd.controls.compra">
+        <ion-select-option value=1>Sí</ion-select-option>
+        <ion-select-option value=0>No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validators" *ngIf="formd.controls.compra.errors && formd.controls.compra.touched" >
+        <div *ngIf="formd.controls.compra.errors?.['required']" color="danger">Dede seleccionar una opción en el campo compra.</div>
+     </div>    
+    
+     
+
+<ion-button color="tertiary" type="submit" class="submit" expand="block" mode="ios" [disabled]="formd.invalid" >
+      Agregar
+      <ion-icon slot="end"  name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+  </form>
+
+</ion-content>

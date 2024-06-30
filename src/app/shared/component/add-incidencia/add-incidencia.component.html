@@ -1,0 +1,53 @@
+<app-header [isModal]="true" title="Agregar"></app-header>
+<ion-content>
+    <div class="d-flex-center">
+    <form  (ngSubmit)="submit()" (keypress.enter)="submit()" >
+
+
+      <app-login-input
+      type="text"
+      label="Código"
+      icon="key-outline"
+      [control]="formu.controls.codigoI"
+      value="{{codigoFinal}}"
+      [readonly]="true"
+      ></app-login-input>
+      <div class="validators" *ngIf="formu.controls.codigoI.errors && formu.controls.codigoI.touched" >
+        <div *ngIf="formu.controls.codigoI.errors?.['required']" color="danger">El codigoI es requerido.</div>
+     </div>
+
+      <app-login-input
+      type="text"
+      label="Título"
+      icon="newspaper-outline"
+      [control]="formu.controls.titulo"></app-login-input>
+      <div class="validators" *ngIf="formu.controls.titulo.errors && formu.controls.titulo.touched" >
+        <div *ngIf="formu.controls.titulo.errors?.['required']" color="danger">El título es requerido.</div>
+     </div>
+
+     <app-login-input
+      type="text"
+      label="Lugar"
+      icon="location-outline"
+      [control]="formu.controls.lugar"></app-login-input>
+      <div class="validators" *ngIf="formu.controls.lugar.errors && formu.controls.lugar.touched" >
+        <div *ngIf="formu.controls.lugar.errors?.['required']" color="danger">El lugar es requerido.</div>
+     </div> 
+
+     <app-login-input
+      type="text"
+      label="Descripción"
+      icon="ellipsis-horizontal-outline"
+       [control]="formu.controls.descripcion">
+    </app-login-input>
+      <div class="validators" *ngIf="formu.controls.descripcion.errors && formu.controls.descripcion.touched" >
+        <div *ngIf="formu.controls.descripcion.errors?.['required']" color="danger">La descripción es requerido.</div>
+     </div>
+  
+      <ion-button color="tertiary" type="submit" class="submit" expand="block" mode="ios"  [disabled]="formu.invalid">
+        Agregar
+        <ion-icon slot="end"  name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </form>
+  </div>
+  </ion-content>
